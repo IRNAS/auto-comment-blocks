@@ -2,6 +2,11 @@
 
 Provides block comment completion for Javadoc-style multi-line comments and single-line comment blocks for most officially supported languages.
 
+## Changes added by IRNAS
+
+This plugin now also closes block comments, if you just type `/*`. Additionaly,
+a closing part `*/` is added automatically.
+
 ## MAJOR CHANGES IN 1.0 UPDATE (Please Read)
 
 A lot has changed in this update. Please open issues for any bugs you encounter.

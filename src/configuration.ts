@@ -7,14 +7,14 @@ import { Rules } from './rules';
 let fs = require('fs');
 
 export class Configuration {
-  
+
   private readonly extensionName: string = "auto-comment-blocks";
-  private readonly singleLineBlockCommand: string = 
+  private readonly singleLineBlockCommand: string =
       "auto-comment-blocks.singleLineBlock";
   private readonly singleLineConfigFile: string = __dirname +
-      "/../../language-configuration/single-line-configuration.json";
+      "/../language-configuration/single-line-configuration.json";
   private readonly multiLineConfigFile: string = __dirname +
-      "/../../language-configuration/multi-line-configuration.json";
+      "/../language-configuration/multi-line-configuration.json";
 
   private readonly singleLineBlockOnEnter: string = "singleLineBlockOnEnter";
   private readonly slashStyleBlocks: string = "slashStyleBlocks";
@@ -22,7 +22,7 @@ export class Configuration {
   private readonly semicolonStyleBlocks: string = "semicolonStyleBlocks";
   private readonly disabledLanguages: string = "disabledLanguages";
 
-  private disabledLanguageList: string[] = 
+  private disabledLanguageList: string[] =
       this.getConfiguration().get<string[]>(this.disabledLanguages);
   private singleLineBlocksMap: Map<string, string> = new Map();
 
@@ -43,11 +43,11 @@ export class Configuration {
     return multiLineConfig["languages"];
   }
 
-  private setLanguageConfiguration(langId: string, 
-                                   multiLine?: boolean, 
+  private setLanguageConfiguration(langId: string,
+                                   multiLine?: boolean,
                                    singleLineStyle?: string): Disposable {
 
-    var langConfig: LanguageConfiguration = { 
+    var langConfig: LanguageConfiguration = {
       onEnterRules: []
     };
 
@@ -63,14 +63,14 @@ export class Configuration {
         langConfig.onEnterRules =
             langConfig.onEnterRules.concat(Rules.slashEnterRules);
       } else if (singleLineStyle === '#') {
-        langConfig.onEnterRules = 
+        langConfig.onEnterRules =
             langConfig.onEnterRules.concat(Rules.hashEnterRules);
       } else if (singleLineStyle === ';') {
         langConfig.onEnterRules =
             langConfig.onEnterRules.concat(Rules.semicolonEnterRules);
       }
     }
-    
+
     return languages.setLanguageConfiguration(langId, langConfig);
   }
 
@@ -86,9 +86,9 @@ export class Configuration {
         }
       }
     }
-    
+
     // get user-customized langIds for this key and add to the map
-    let customSlashLangs = 
+    let customSlashLangs =
         this.getConfiguration().get<string[]>(this.slashStyleBlocks);
     for (let langId of customSlashLangs) {
       if (langId && langId.length > 0) {
@@ -96,7 +96,7 @@ export class Configuration {
       }
     }
 
-    let customHashLangs = 
+    let customHashLangs =
         this.getConfiguration().get<string[]>(this.hashStyleBlocks);
     for (let langId of customHashLangs) {
       if (langId && langId.length > 0) {
@@ -126,7 +126,7 @@ export class Configuration {
     }
 
     for (let langId of multiLineLangs) {
-      if (!this.singleLineBlocksMap.has(langId) && 
+      if (!this.singleLineBlocksMap.has(langId) &&
           !this.isLangIdDisabled(langId)) {
 
         let disposable = this.setLanguageConfiguration(langId, true);
@@ -163,7 +163,7 @@ export class Configuration {
         return;
       }
 
-      var indentedNewLine = '\n' + 
+      var indentedNewLine = '\n' +
           line.text.substring(0, line.text.search(indentRegex));
       let isOnEnter = this.getConfiguration().get<boolean>(
           this.singleLineBlockOnEnter);

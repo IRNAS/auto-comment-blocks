@@ -11,8 +11,17 @@ export class Rules {
       afterText: /^\s*\*\/$/,
       action: { indentAction: IndentAction.IndentOutdent, appendText: ' * ' }
     }, {
+      // e.g. /* | */
+      beforeText: /^\s*\/\*(?!\/)([^\*]|\*(?!\/))*$/,
+      afterText: /^\s*\*\/$/,
+      action: { indentAction: IndentAction.IndentOutdent, appendText: ' * ' }
+    }, {
       // e.g. /** ...|
       beforeText: /^\s*\/\*\*(?!\/)([^\*]|\*(?!\/))*$/,
+      action: { indentAction: IndentAction.None, appendText: ' * ' }
+    }, {
+      // e.g. /* ...|
+      beforeText: /^\s*\/\*(?!\/)([^\*]|\*(?!\/))*$/,
       action: { indentAction: IndentAction.None, appendText: ' * ' }
     }, {
       // e.g. /*! | */
