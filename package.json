@@ -1,13 +1,13 @@
 {
-    "name": "auto-comment-blocks",
-    "displayName": "Auto Comment Blocks",
+    "name": "auto-comment-blocks-single-star",
+    "displayName": "Auto Comment Blocks - single star",
     "description": "Provides block comment completion for Javadoc-style multi-line comments and single-line comment blocks for most officially supported languages.",
-    "version": "1.0.1",
-    "publisher": "kevinkyang",
-    "homepage": "https://github.com/kevinkyang/auto-comment-blocks",
+    "version": "1.1.0",
+    "publisher": "IRNAS",
+    "homepage": "https://github.com/irnas/auto-comment-blocks",
     "repository": {
         "type": "git",
-        "url": "https://github.com/kevinkyang/auto-comment-blocks.git"
+        "url": "https://github.com/irnas/auto-comment-blocks.git"
     },
     "license": "SEE LICENSE IN LICENSE",
     "icon": "img/icon.png",
